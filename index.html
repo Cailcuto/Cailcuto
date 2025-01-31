@@ -15,6 +15,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+            position: relative;
         }
         .container {
             background: white;
@@ -61,12 +63,23 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .heart-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .heart-container img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
         .hearts {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 50%;
+            left: 50%;
             width: 100%;
             height: 100%;
+            transform: translate(-50%, -50%);
             pointer-events: none;
         }
         .heart {
@@ -79,8 +92,16 @@
             animation: floatUp 4s linear infinite;
         }
         @keyframes floatUp {
-            from { transform: translateY(100vh) scale(1); opacity: 1; }
-            to { transform: translateY(-10vh) scale(0.5); opacity: 0; }
+            from { transform: translateY(100px) scale(1); opacity: 1; }
+            to { transform: translateY(-50px) scale(0.5); opacity: 0; }
+        }
+        .dat-img {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 100px;
+            height: auto;
+            transform: rotate(-10deg);
         }
     </style>
 </head>
@@ -88,11 +109,18 @@
 
     <div class="container">
         <h1>💖 Gửi đến Hồng xinh đẹp 💖</h1>
+
+        <div class="heart-container">
+            <img src="4FB27DFB-41FC-4A0E-96A1-9F347D632DCD.jpeg" alt="Hồng">
+            <div class="hearts"></div>
+        </div>
+
         <p>Hồng ơi, Đạt có điều này muốn nói... Nhưng chỉ khi cậu nhấn vào nút này thôi! 😘</p>
         <button onclick="showMessage()">Bấm vào đây 💕</button>
         <p id="message">Hồng à, cậu có biết không? Mỗi ngày tớ đều nghĩ về cậu... 💕  
         Tớ thích cậu rất nhiều! Làm người yêu tớ nhé? 😳💞</p>
-        <div class="hearts"></div>
+
+        <img src="48346BAB-D08D-4C4D-8D17-97E99D4BD8F6.jpeg" alt="Đạt" class="dat-img">
     </div>
 
     <script>
@@ -106,7 +134,7 @@
             for (let i = 0; i < 20; i++) {
                 let heart = document.createElement("div");
                 heart.classList.add("heart");
-                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.left = Math.random() * 100 + "%";
                 heart.style.animationDuration = Math.random() * 2 + 3 + "s";
                 heartContainer.appendChild(heart);
                 setTimeout(() => { heart.remove(); }, 4000);
