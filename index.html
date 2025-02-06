@@ -6,18 +6,12 @@
     <title>Gửi đến Hồng yêu thương 💖</title>
     <style>
         body {
-            text-align: center;
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to right, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
         .container {
             background: white;
@@ -25,6 +19,7 @@
             border-radius: 20px;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
             max-width: 600px;
+            margin: 50px auto;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -38,6 +33,7 @@
         p {
             font-size: 20px;
             color: #333;
+            margin: 20px 0;
         }
         button {
             background-color: #ff4081;
@@ -82,38 +78,8 @@
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
-        .hearts {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-        .heart {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background-color: pink;
-            clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 80%, 20% 100%, 0% 35%);
-            opacity: 0.8;
-            animation: floatUp 4s linear infinite;
-        }
-        @keyframes floatUp {
-            from { transform: translateY(150px) scale(1); opacity: 1; }
-            to { transform: translateY(-100px) scale(0.5); opacity: 0; }
-        }
-        .dat-img {
-            position: absolute;
-            bottom: -40px;
-            right: -40px;
-            width: 120px;
-            height: auto;
-            transform: rotate(-15deg);
-        }
         .stars {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -122,6 +88,13 @@
             background: url('https://media.giphy.com/media/L2V4CaTnF44ZTixFmT/giphy.gif') repeat;
             background-size: cover;
             opacity: 0.5;
+        }
+        .extra-content {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -133,7 +106,6 @@
 
         <div class="heart-container">
             <img src="4FB27DFB-41FC-4A0E-96A1-9F347D632DCD.jpeg" alt="Hồng">
-            <div class="hearts"></div>
         </div>
 
         <p>Hồng à, cậu có biết không? Mỗi ánh nhìn của cậu như ngàn ánh sao sáng rực trên bầu trời... 🌟  
@@ -142,26 +114,17 @@
         <button onclick="showMessage()">Bấm vào đây 💕</button>
         <p id="message">Hồng ơi, từ lần đầu gặp cậu, tớ đã biết rằng trái tim tớ không còn là của tớ nữa... 💓  
         Nó thuộc về cậu rồi. Làm người yêu tớ nhé? 🥰</p>
+    </div>
 
-        <img src="48346BAB-D08D-4C4D-8D17-97E99D4BD8F6.jpeg" alt="Đạt" class="dat-img">
+    <div class="extra-content">
+        <h2>Những dòng tâm sự...</h2>
+        <p>Mỗi ngày tớ đều cảm thấy thật đặc biệt khi nghĩ về cậu. Cậu chính là nguồn cảm hứng, là ánh sáng, là tất cả mọi thứ đối với tớ. 💖</p>
+        <p>Tớ hy vọng rằng chúng ta sẽ cùng nhau bước qua mọi thử thách, nắm tay nhau thật chặt và tạo nên những kỷ niệm tuyệt đẹp. 👫</p>
     </div>
 
     <script>
         function showMessage() {
             document.getElementById("message").style.display = "block";
-            createHearts();
-        }
-
-        function createHearts() {
-            const heartContainer = document.querySelector(".hearts");
-            for (let i = 0; i < 30; i++) {
-                let heart = document.createElement("div");
-                heart.classList.add("heart");
-                heart.style.left = Math.random() * 100 + "%";
-                heart.style.animationDuration = Math.random() * 2 + 3 + "s";
-                heartContainer.appendChild(heart);
-                setTimeout(() => { heart.remove(); }, 4000);
-            }
         }
     </script>
 </body>
